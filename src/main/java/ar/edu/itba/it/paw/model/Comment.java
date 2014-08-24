@@ -2,11 +2,15 @@ package ar.edu.itba.it.paw.model;
 
 public class Comment {
 	private final String text;
-	public Comment(String comment){
+	private final UserInfo userInfo;
+	public Comment(UserInfo userInfo,String comment){
+		this.userInfo = userInfo;
 		this.text = comment;
 	}
-	@Override
-	public String toString() {
+	public String getText() {
 		return text;
+	}
+	public UserInfo getUserInfo() {
+		return userInfo;
 	}
 }

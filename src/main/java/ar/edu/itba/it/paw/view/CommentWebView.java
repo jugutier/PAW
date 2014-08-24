@@ -1,15 +1,17 @@
 package ar.edu.itba.it.paw.view;
 
 import ar.edu.itba.it.paw.model.Comment;
+import ar.edu.itba.it.paw.model.UserInfo;
 
 public class CommentWebView {
 	 private CommentWebView(){
 		 
 	 }
-	 public static String getHeaderView(){
-		 return "<tr><th>Comment description</th></tr>";
+	 private static String getHeaderView(UserInfo userInfo){
+		 return "<span><strong>name: </strong>"+userInfo.getName()+"</span><br/><span><strong>email: </strong>"+userInfo.getEmail()+"</span><br/>";
 	 }
-	 public static String getView(Comment c){		 
-		 return "<tr>"+c+"</tr>";
+	 public static String getView(Comment c){
+		 UserInfo userInfo = c.getUserInfo();		
+		 return  "<tr><div>"+getHeaderView(userInfo)+"<p><strong>comment: </strong>"+c.getText()+"</p></div></tr>";
 	 }
 }

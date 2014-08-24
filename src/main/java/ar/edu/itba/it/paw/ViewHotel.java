@@ -45,9 +45,10 @@ public class ViewHotel extends HttpServlet {
 	private String getCommentForHotelHTMLCode(Hotel requestedHotel){
 		List<Comment> comments = CommentManager.getInstance().getComments(requestedHotel);
 		StringBuffer sb = new StringBuffer();
-		sb.append("Other users commented:<br/>");
+		sb.append("<h2>Other users commented:</h2><br/>");
 		for(Comment c:comments){
 			sb.append(CommentWebView.getView(c));
+			sb.append("<hr width=\"300\" align=\"left\">");
 		}
 		
 		return sb.toString();
