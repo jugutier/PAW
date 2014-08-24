@@ -40,17 +40,33 @@ public class ViewHotel extends HttpServlet {
 		sb.append(HotelTableView.getDetailedView(requestedHotel));
 		sb.append("</table>");		
 		sb.append(getCommentForHotelHTMLCode(requestedHotel));
+		sb.append(getSubmitCommentHTMLCode(requestedCode));
 		return sb.toString();
 	}
 	private String getCommentForHotelHTMLCode(Hotel requestedHotel){
 		List<Comment> comments = CommentManager.getInstance().getComments(requestedHotel);
 		StringBuffer sb = new StringBuffer();
-		sb.append("<h2>Other users commented:</h2><br/>");
-		for(Comment c:comments){
-			sb.append(CommentWebView.getView(c));
-			sb.append("<hr width=\"300\" align=\"left\">");
+		if(comments.isEmpty()){
+			sb.append("<h2>No comments yet, be the first to comment!</h2>");
+		}else{
+			sb.append("<h2>Other users commented:</h2><br/>");
+			for(Comment c:comments){
+				sb.append(CommentWebView.getView(c));
+				sb.append("<hr width=\"300\" align=\"left\">");
+			}
 		}
 		
 		return sb.toString();
+	}
+	private String getSubmitCommentHTMLCode(int requestedCode){
+		StringBuffer sb = new StringBuffer();
+		sb.append("<h3>Submit a comment:</h3>");
+		sb.append("<form method=\"POST\" action=\"/HotelApp/addComment/?code="+requestedCode+"\">"); 
+		sb.append("<strong>name:</strong> <input style=\"width=300px;height=300px;\" name=\"userName\" value=\"John Doe\"><br/>");
+		sb.append("<strong>email:</strong> <input style=\"width=300px;height=300px;\" name=\"email\" value=\"john@doe.com\"><br/>");
+	    sb.append("<strong>comment:</strong> <input style=\"width=300px;height=300px;\" name =\"text\" value=\"write a comment here\"><br/>");
+	    sb.append("<button type=\"submit\">Submit</button>");
+	    sb.append("</form>");
+	    return sb.toString();
 	}
 }

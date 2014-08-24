@@ -23,8 +23,10 @@ public class CommentManager {
 			comments = new LinkedList<Comment>();
 			commentsPerHotel.put(h, comments);
 		}
-		comments.add(new Comment(new UserInfo("John Doe", "john@user.com"),"This is a test comment from John"));//TODO:remove and generate stub
-		comments.add(new Comment(new UserInfo("Jane Doe", "jane@user.com"),"This is a test comment from Jane"));//TODO:remove and generate stub
 		return comments;
+	}
+	public boolean addComent(Comment c,Hotel h){
+		return getComments(h).add(c);
+		 
 	}
 }

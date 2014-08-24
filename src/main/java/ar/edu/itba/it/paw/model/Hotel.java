@@ -1,6 +1,9 @@
 package ar.edu.itba.it.paw.model;
 
-public class Hotel {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Hotel implements Serializable{
 	private int code;
 	private String name, description;
 

@@ -12,6 +12,10 @@
 		<servlet-name>ViewHotel</servlet-name>
 		<servlet-class>ar.edu.itba.it.paw.ViewHotel</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AddComment</servlet-name>
+		<servlet-class>ar.edu.itba.it.paw.AddComment</servlet-class>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>ListHotels</servlet-name>
@@ -20,5 +24,9 @@
 	<servlet-mapping>
 		<servlet-name>ViewHotel</servlet-name>
 		<url-pattern>/viewHotel/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddComment</servlet-name>
+		<url-pattern>/addComment/*</url-pattern>
 	</servlet-mapping>
 </web-app>

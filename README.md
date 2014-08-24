@@ -46,5 +46,7 @@ On the one hand we need to create a form to submit the comment, on the other han
 Map<String, String[]> map = request.getParameterMap();
 ```
 Will come in handy to get the information from `POST` parameters.
+####Also:
+once `doPost` is completed `sendRedirect` will be needed to go back programatically.
 
 
