@@ -21,10 +21,11 @@ public class Hotel {
 	public String getName() {
 		return name;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(obj.getClass() != Hotel.class){
+			return false;
+		}		
+		return ((Hotel)obj).code == this.code;
+	}
 }
-
-/*
- * Cada hotel tiene un código, nombre y descripción. No es necesario almacenar
- * esta información en un archivo, basta con mantenerla en memoria durante la
- * ejecución de la aplicación.
- */

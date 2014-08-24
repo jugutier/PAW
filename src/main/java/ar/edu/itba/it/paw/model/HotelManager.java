@@ -18,4 +18,12 @@ public class HotelManager {
 		}
 		return hotels;
 	}
+	public Hotel getHotelByCode(int code){
+		for(Hotel h :hotels){
+			if(h.getCode() == code){
+				return h;
+			}
+		}
+		return null;
+	}
 }
