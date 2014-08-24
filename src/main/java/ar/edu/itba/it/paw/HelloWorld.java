@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 
 //@SuppressWarnings("serial")
 public class HelloWorld extends HttpServlet {
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-throws ServletException, IOException {
-resp.getWriter().append("<html><body>HelloWorld!" +
-"</body></html>");
-}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		resp.getWriter().append("<html><body>HelloWorld!" + "</body></html>");
+	}
 }

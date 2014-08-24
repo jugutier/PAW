@@ -12,12 +12,4 @@
 		<servlet-name>HelloWorld</servlet-name>
 		<url-pattern>/helloWorld</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>ListHotels</servlet-name>
-		<servlet-class>ar.edu.itba.it.paw.ListHotels</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>ListHotels</servlet-name>
-		<url-pattern>/listHotels</url-pattern>
-	</servlet-mapping>
 </web-app>
