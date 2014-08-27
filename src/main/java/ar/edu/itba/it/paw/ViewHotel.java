@@ -1,6 +1,7 @@
 package ar.edu.itba.it.paw;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -23,12 +24,20 @@ public class ViewHotel extends HttpServlet {
 			throws ServletException, IOException {
 		int requestedCode = Integer.valueOf(WebUtilities.getQueryMap(
 				req.getQueryString()).get("code"));
-		resp.getWriter().append(
-				"<html><body>" +getHeaderHTMLCode()+ getHotelHTMLCode(requestedCode) + "</body></html>");
+		PrintWriter out = resp.getWriter();
+		out.append("<html><body>");
+		out.append(getBackHTMLCode());
+		out.append(getHeaderHTMLCode());
+		out.append(getHotelHTMLCode(requestedCode));
+		out.append(getSubmitCommentHTMLCode(req.getContextPath(),requestedCode));
+		out.append("</body></html>");
 
 	}
 	private String getHeaderHTMLCode(){
 		return "<h1>Details for Hotel:</h1>";
+	}
+	private String getBackHTMLCode(){
+		return "<a href=\"../\">back</a>";
 	}
 
 	private String getHotelHTMLCode(int requestedCode) {
@@ -40,7 +49,6 @@ public class ViewHotel extends HttpServlet {
 		sb.append(HotelTableView.getDetailedView(requestedHotel));
 		sb.append("</table>");		
 		sb.append(getCommentForHotelHTMLCode(requestedHotel));
-		sb.append(getSubmitCommentHTMLCode(requestedCode));
 		return sb.toString();
 	}
 	private String getCommentForHotelHTMLCode(Hotel requestedHotel){
@@ -58,10 +66,10 @@ public class ViewHotel extends HttpServlet {
 		
 		return sb.toString();
 	}
-	private String getSubmitCommentHTMLCode(int requestedCode){
+	private String getSubmitCommentHTMLCode(String context,int requestedCode){
 		StringBuffer sb = new StringBuffer();
 		sb.append("<h3>Submit a comment:</h3>");
-		sb.append("<form method=\"POST\" action=\"/HotelApp/addComment/?code="+requestedCode+"\">"); 
+		sb.append("<form method=\"POST\" action=\"/HotelApp/addComment/?code="+requestedCode+"\">"); //TODO:why doesn't app context work
 		sb.append("<strong>name:</strong> <input style=\"width=300px;height=300px;\" name=\"userName\" value=\"John Doe\"><br/>");
 		sb.append("<strong>email:</strong> <input style=\"width=300px;height=300px;\" name=\"email\" value=\"john@doe.com\"><br/>");
 	    sb.append("<strong>comment:</strong> <input style=\"width=300px;height=300px;\" name =\"text\" value=\"write a comment here\"><br/>");

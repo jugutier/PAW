@@ -1,7 +1,6 @@
 package ar.edu.itba.it.paw;
 
 import java.io.IOException;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +18,11 @@ public class AddComment extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		Map<String, String[]> map = req.getParameterMap();
-		Comment c = new Comment(new UserInfo( map.get("userName")[0],map.get("email")[0]),map.get("text")[0]);
+		Comment c = new Comment(new UserInfo( req.getParameter("userName"),req.getParameter("email")),req.getParameter("text"));
 		int requestedCode = Integer.valueOf(WebUtilities.getQueryMap(
 				req.getQueryString()).get("code"));
 		CommentManager.getInstance().addComent(c, HotelManager.getInstance().getHotelByCode(requestedCode));
-		resp.sendRedirect("/HotelApp/viewHotel/?code="+requestedCode);
+		
+		resp.sendRedirect("../viewHotel/?code="+requestedCode);//TODO:why doesn't getappcontext work.
 	}
 }
