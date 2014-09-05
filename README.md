@@ -61,5 +61,22 @@ There's an extra `error` parameter sent by Query String when login is unsuccesfu
 
 ####<u>Personal observations:</u>
 To persist user information to be used in the comment section, we needed to create a session. Credentials couldn't be stored in memory because instances are unique for the whole server.
+
 Refer to this site for learning how to use a session:
 http://www.javamex.com/tutorials/servlets/session_api.shtml
+
+###Exercise 7
+
+####<u>Personal observations:</u>
+A filter is the best way to obtain the proposed alternative. With it whenever a user attempts to manually type an address it will be redirected to the login screen (unless a session has been created, product of a succesfull login).
+
+Refer to this site for learning how to use filters:
+http://www.oracle.com/technetwork/java/filters-137243.html
+
+####Also:
+Remember to include a fully quallified name to the filter in web.xml.
+
+####Known fact:
+Filtering by /* within the `web.xml` provokes an infinite loop from the filter calling to itself when entering to login. I need to find a fix on this. (For now it just works on listHotels)
+
+
