@@ -2,14 +2,15 @@ package ar.edu.itba.it.paw;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import ar.edu.itba.it.paw.model.CredentialsManager;
+import ar.edu.itba.it.paw.model.UserInfo;
 
 @SuppressWarnings("serial")
 public class Login extends HttpServlet {
@@ -43,6 +44,10 @@ public class Login extends HttpServlet {
 		}else{
 			resp.sendRedirect(req.getContextPath()+"/login?error=true");
 		}
+		 HttpSession sess = req.getSession(true);
+		 UserInfo userInfo = new UserInfo(username,"a@a.com");
+		  sess.setAttribute("USER", userInfo);
+		
 		
 	}
 }

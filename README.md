@@ -57,3 +57,9 @@ Some extra dependencies were added in order to rediret to "login" as homepage. T
 ####Also:
 There's an extra `error` parameter sent by Query String when login is unsuccesfull. This might not be the best solution, but the username isn't lost. A session is still not created, so one could easily access to the hotel list by typing the URL into the browser.
 
+###Exercise 6
+
+####<u>Personal observations:</u>
+To persist user information to be used in the comment section, we needed to create a session. Credentials couldn't be stored in memory because instances are unique for the whole server.
+Refer to this site for learning how to use a session:
+http://www.javamex.com/tutorials/servlets/session_api.shtml
