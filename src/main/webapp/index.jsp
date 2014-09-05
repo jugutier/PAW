@@ -9,7 +9,7 @@
 </center>
 <%
    response.setStatus(response.SC_MOVED_TEMPORARILY);
-   response.setHeader("Location", "/login"); 
+   response.setHeader("Location", "login"); 
 %>
 </body>
 </html>

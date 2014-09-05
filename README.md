@@ -43,10 +43,17 @@ For the first time we have 2 `servlets` running at the same time. Take special a
 On the one hand we need to create a form to submit the comment, on the other hand we need to implement the requested `servlet` and retrieve the information submitted by `POST`.
 
 ```
-Map<String, String[]> map = request.getParameterMap();
+request.getParameter("parameter_name");
 ```
 Will come in handy to get the information from `POST` parameters.
 ####Also:
 once `doPost` is completed `sendRedirect` will be needed to go back programatically.
 
+###Exercise 5
+
+####<u>Personal observations:</u>
+Some extra dependencies were added in order to rediret to "login" as homepage. The whole validation for login credentials is done within the `Login` Servlet.
+
+####Also:
+There's an extra `error` parameter sent by Query String when login is unsuccesfull. This might not be the best solution, but the username isn't lost. A session is still not created, so one could easily access to the hotel list by typing the URL into the browser.
 
