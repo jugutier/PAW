@@ -21,12 +21,13 @@ public class Login extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		out.println("<head><body>");
 		out.println("<h1>Hotel app!</h1>");
-		String login =  req.getParameter("error");
-		if(login!=null && login.equals("true")){
+		String login = req.getParameter("error");
+		if (login != null && login.equals("true")) {
 			out.println("<span><font color=\"red\">Error try again</font></span><br/>");
 		}
 		out.println("<span>Sign in to access</span><br/>");
-		out.println("<form method=\"POST\" action=\""+req.getContextPath()+"/login\">"); 
+		out.println("<form method=\"POST\" action=\"" + req.getContextPath()
+				+ "/login\">");
 		out.println("<strong><label for=\"username\">Username:</label></strong>");
 		out.println("<input type=\"username\" value=\"john doe\" name=\"username\"><br/>");
 		out.println("<strong><label for=\"password\">Password:</label></strong>");
@@ -35,19 +36,20 @@ public class Login extends HttpServlet {
 		out.println("</form>");
 		out.println("</head></body>");
 	}
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {String username = req.getParameter("username");
+			throws ServletException, IOException {
+		String username = req.getParameter("username");
 		String password = req.getParameter("password");
-		if(CredentialsManager.getInstance().isValid(username, password)){
-			resp.sendRedirect(req.getContextPath()+"/listHotels");
-		}else{
-			resp.sendRedirect(req.getContextPath()+"/login?error=true");
+		if (CredentialsManager.getInstance().isValid(username, password)) {
+			HttpSession sess = req.getSession(true);
+			UserInfo userInfo = new UserInfo(username, "a@a.com");
+			sess.setAttribute("USER", userInfo);
+			resp.sendRedirect(req.getContextPath() + "/listHotels");
+		} else {
+			resp.sendRedirect(req.getContextPath() + "/login?error=true");
 		}
-		 HttpSession sess = req.getSession(true);
-		 UserInfo userInfo = new UserInfo(username,"a@a.com");
-		  sess.setAttribute("USER", userInfo);
-		
-		
+
 	}
 }
