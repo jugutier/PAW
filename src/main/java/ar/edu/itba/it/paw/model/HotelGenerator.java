@@ -10,7 +10,7 @@ public class HotelGenerator {
 	
 	public static List<Hotel> generate(){
 		List<Hotel> hotels = new LinkedList<Hotel>();
-		for(int i =0;i<50;i++){
+		for(int i =0;i<15;i++){
 			hotels.add(new Hotel(getRandomCode(),"Name "+i,"Desc"+i));
 		}
 		return hotels;
