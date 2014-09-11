@@ -28,9 +28,6 @@ public class AddComment extends HttpServlet {
 		CommentManager.getInstance().addComent(c,
 				HotelManager.getInstance().getHotelByCode(requestedCode));
 
-		resp.sendRedirect("../viewHotel/?code=" + requestedCode);// TODO:why
-																	// doesn't
-																	// getappcontext
-																	// work.
+		resp.sendRedirect("viewHotel?code=" + requestedCode);
 	}
 }

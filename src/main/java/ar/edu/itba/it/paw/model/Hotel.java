@@ -31,4 +31,8 @@ public class Hotel implements Serializable{
 		}		
 		return ((Hotel)obj).code == this.code;
 	}
+	@Override
+	public int hashCode() {
+		return code;//TODO: check
+	}
 }

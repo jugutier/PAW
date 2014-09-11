@@ -5,6 +5,59 @@ Exercices for Web Applications Programming.
 
 #Each git tag is one excersice.
 
+##Guide 2
+###Exercise 1
+
+The commands needed to install postgres on your Linux computer are:
+
+```
+>sudo apt-get install postgresql-9.3 pgadmin3
+>sudo su
+>su postgres
+>psql
+psql (9.3.4, server 9.1.13)
+Type "help" for help.
+
+postgres=# CREATE USER paw WITH PASSWORD '123456';
+>CREATE ROLE
+postgres=# CREATE DATABASE hotelapp;
+>CREATE DATABASE
+postgres=# GRANT ALL PRIVILEGES ON DATABASE hotelapp to paw;
+>GRANT
+postgres=# \q
+
+>pgadmin3
+```
+
+####Also: An example to a `JDBC` connection can be found here: http://www.mkyong.com/jdbc/how-do-connect-to-postgresql-with-jdbc-driver-java/. An example to Query can be found here: http://docs.oracle.com/javase/tutorial/jdbc/basics/processingsqlstatements.html
+
+####EXTRA: In web.xml using a url-pattern such as /servletName* won't work for querystrings, just use /servletName
+
+###Exercise 2
+
+Necessary dependencies added to `pom.xml`. JSP files created.
+
+There are three basic uses for JSP once parameters are set into the request you might want to:
+1)Iterate over a list using foreach.
+2)Check for a condition with `if` or `choose when otherwise`.
+3)Declare URLs with url tag, and set parameters into it.
+
+###Exercise 3
+Done the editing part. Creation missing. Validation missing.
+
+###Exercise 4
+Done with another use of JSP:
+Testing for an empty list using the reserved word empty.
+
+Displaying the corresponding html code when empty.
+
+###Exercise 5
+
+
+###Exercise 6
+Done using the same as in exercise 3.
+
+
 ##Guide 1
 ###Exercise 1
 

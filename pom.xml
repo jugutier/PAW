@@ -38,6 +38,11 @@
 			<version>6.1.14</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>8.4-701.jdbc3</version>
+		</dependency>
 	</dependencies>
 
 
